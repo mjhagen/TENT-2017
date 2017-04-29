@@ -1,0 +1,56 @@
+@media only screen and (min-width: 300px) {
+  nav.level-2 a {
+    width: calc( 100% - 21px );
+  }
+
+  #home-calendar {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  nav.level-2 a {
+    width: calc( 50% - 21px );
+  }
+
+  #home-calendar {
+    width: calc( 50% - 26px );
+  }
+
+  #carousel {
+    width: calc( 50% - 25px );
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  nav.level-2 a {
+    width: calc( 33% - 21px );
+  }
+
+  #home-calendar {
+    width: calc( 33% - 26px );
+  }
+
+  #carousel {
+    width: calc( 67% - 25px );
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  nav.level-2 a {
+    width: calc( 25% - 21px );
+  }
+
+  #home-calendar {
+    width: calc( 25% - 26px );
+  }
+
+  #carousel {
+    display: block;
+    width: calc( 75% - 25px );
+  }
+
+  #carousel img {
+    width: 100%;
+  }
+}
