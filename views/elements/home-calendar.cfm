@@ -28,11 +28,13 @@
           <cfelse>
             <time>#lsDateFormat( start, 'd/m' )#</time> t/m <time>#lsDateFormat( end, 'd/m' )#</time>
           </cfif>
-          | <time>#lsTimeFormat( start, 'HH:mm' )# - #lsTimeFormat( end, 'HH:mm' )# U</time>
+          <cfif timeFormat( start, 'HHmm' ) neq timeFormat( end, 'HHmm' )>
+            | <time>#lsTimeFormat( start, 'HH:mm' )# - #lsTimeFormat( end, 'HH:mm' )# U</time>
+          </cfif>
         </p>
       </div>
     </cfloop>
 
-    <a href="/_calendar">#i18n.translate( 'show-more' )#</a>
+    <h3><a href="/_calendar">#i18n.translate( 'show-more' )#</a></h3>
   </section>
 </cfoutput>

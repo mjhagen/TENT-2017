@@ -17,6 +17,7 @@ html, body {
 body {
   background-color: #323232;
   font-family: "futura-pt", sans-serif;
+  font-size: 16px;
   color: white;
 }
 
@@ -48,6 +49,10 @@ time {
   top: 25px;
   left:calc(50% - 135px);
   height: 60px;
+}
+
+#logo span {
+  display: none;
 }
 
 #content {
@@ -215,6 +220,7 @@ nav.contact a:nth-child(4) {
 nav.pagination {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   line-height: 2em;
   border-bottom-width: 1px;
   border-bottom-style: solid;

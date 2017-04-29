@@ -130,6 +130,7 @@ component accessors=true {
                 continue;
               }
             }
+
             var threadVars = {
               "scaler" = imageScalerService,
               "image" = attachedFile,
@@ -157,6 +158,8 @@ component accessors=true {
     var queryService = new query( qoq = agendaQuery,
                                dbtype = "query",
                                   SQL = "SELECT DISTINCT * FROM qoq ORDER BY [start] DESC" );
+
+
 
     return queryService.execute( ).getResult( );
   }

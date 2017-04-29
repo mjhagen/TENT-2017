@@ -6,6 +6,8 @@
   right: 0;
 }
 
+/* CALENDAR:; */
+
 #home-calendar {
   color: #96FF96;
   text-transform: uppercase;
@@ -14,24 +16,42 @@
   border-right: 1px solid #96FF96;
 }
 
-#home-calendar h3 {
-  line-height: 2em;
-  border-bottom: 2px dotted #96FF96;
+#home-calendar h3, #home-calendar h4, #home-calendar p {
+  margin: 0;
 }
 
-#home-calendar h3, #home-calendar h4 {
-  margin: 0;
+#home-calendar h3 {
+  line-height: 2em;
+  border: 0 dotted #96FF96;
+  font-size: inherit;
+}
+
+#home-calendar h3:first-child {
+  margin-bottom: 10px;
+  border-bottom-width: 2px;
+}
+
+#home-calendar h3:last-child {
+  border-top-width: 2px;
 }
 
 #home-calendar div {
   border-bottom: 1px solid #96FF96;
   margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+#home-calendar div:last-of-type {
+  border-bottom: 0;
 }
 
 #home-calendar div img {
   max-width: 50%;
-  max-height: 100px;
+  max-height: 125px;
+  margin: 10px 0;
 }
+
+/* CAROUSEL:; */
 
 #carousel {
   position: absolute;
