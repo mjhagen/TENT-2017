@@ -6,6 +6,7 @@
   #home-calendar {
     width: 100%;
     border: 0;
+    padding-right: 0;
   }
 
   /* LESS MARGINS ON PHONES? */
@@ -18,19 +19,16 @@
 
   #border {
     top: 105px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
   }
 
   #content {
-    top: 116px;
-    left: 32px;
-    right: 32px;
-    bottom: 32px;
-  }
-
-  .articles {
+    top: 125px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
     font-size: 14px;
   }
 }

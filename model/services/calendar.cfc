@@ -13,7 +13,7 @@ component accessors=true {
     return this;
   }
 
-  public query function getFirst( numeric limit=3 ) {
+  public query function getFirst( required numeric limit = 3 ) {
     var queryService = new query( qoq = variables.fullCalendar, dbtype = "query", maxRows = limit );
 
     queryService.setSQL( " SELECT * FROM qoq " );
@@ -21,9 +21,22 @@ component accessors=true {
     return queryService.execute( ).getResult( );
   }
 
-  public query function getByShow( string currentShow = "" ) {
+  public query function getFirstByShow( required numeric limit = 3, required string currentShow = "" ) {
+    return getByShow( currentShow, limit );
+  }
+
+  public query function getByShow( required string currentShow = "", numeric limit ) {
     var sql = " SELECT * FROM qoq WHERE 0 = 0 ";
-    var queryService = new query( qoq = variables.fullCalendar, dbtype = "query" );
+    var args = {
+      "qoq" = variables.fullCalendar,
+      "dbtype" = "query"
+    };
+
+    if ( !isNull( limit ) ) {
+      args[ "maxRows" ] = limit;
+    }
+
+    var queryService = new query( argumentCollection = args );
 
     if ( isSimpleValue( currentShow ) ) {
       queryService.setSQL( sql & " AND LOWER( title ) = ? " );

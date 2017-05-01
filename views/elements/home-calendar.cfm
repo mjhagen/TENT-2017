@@ -6,8 +6,8 @@
       <div>
         <cfif len( attachments )>
           <cfloop list="#attachments#" index="attachment">
-            <cfif util.fileExistsUsingCache( "#root#/www/inc/img/resized/medium-#attachment#" )>
-              <img src="/inc/img/resized/medium-#attachment#" />
+            <cfif util.fileExistsUsingCache( "#root#/www/inc/img/resized/m-#attachment#" )>
+              <img src="/inc/img/resized/m-#attachment#" />
             <cfelse>
               <!-- MISSING: #root#/www/inc/img/resized/#attachment# -->
             </cfif>

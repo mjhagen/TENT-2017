@@ -7,4 +7,10 @@ component extends=mustang.webmanager {
     "l" = [ 1152 ],
     "x" = [ 1536 ]
   };
+  variables.framework.diConfig.constants.config.templates = [
+    "templates.article",
+    "templates.show"
+  ];
+
+  // variables.framework.trace = true;
 }

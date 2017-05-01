@@ -1,7 +1,7 @@
 <cfoutput>
-  <nav class="level-1">
+  <nav class="level-1"><ul>
     <cfloop array="#rc.navigation[ 1 ]#" index="item">
-      <a class="colored-bg" href="#rc.basePath#/#util.variableFormat( item )#">#item#</a>
+      <li class="colored-bg"><a href="#rc.basePath#/#util.variableFormat( item )#">#item#</a></li>
     </cfloop>
-  </nav>
+  </ul></nav>
 </cfoutput>

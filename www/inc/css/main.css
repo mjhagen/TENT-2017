@@ -2,8 +2,30 @@
   width: 0px;
 }
 
+#wrapper {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+}
+
 .clearfix {
   clear: both;
+}
+
+table.cfdump_wddx td,
+table.cfdump_xml td,
+table.cfdump_struct td,
+table.cfdump_varundefined td,
+table.cfdump_array td,
+table.cfdump_query td,
+table.cfdump_cfc td,
+table.cfdump_object td,
+table.cfdump_binary td,
+table.cfdump_udf td,
+table.cfdump_udfbody td,
+table.cfdump_udfarguments td {
+  color: black;
 }
 
 html, body {
@@ -25,7 +47,7 @@ a {
   text-decoration: none;
 }
 
-b, strong, i, em, nav.languages a.active, nav.level-2 a {
+b, strong, i, nav.languages a.active, nav.level-2 a {
   font-weight: 700;
 }
 
@@ -36,12 +58,25 @@ time {
 #border {
   position: fixed;
   z-index: 0;
-  left: 25px;
-  right: 25px;
   top: 120px;
+  right: 25px;
+  left: 25px;
   bottom: 25px;
   border-width: 1px;
   border-style: solid;
+}
+
+#content {
+  top: 146px;
+  right: 51px;
+  left: 51px;
+  bottom: 51px;
+
+  position: absolute;
+  z-index: 0;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #logo {
@@ -51,55 +86,37 @@ time {
   height: 60px;
 }
 
-#logo span {
-  display: none;
-}
+#logo path                        { fill: white; } /*#96FF96*/
+.colored-border                   { border-color: white; }
+.colored-bg                       { background-color: white; }
+.colored-text, a, em              { color: #96FF96; }
 
-#content {
-  bottom: 51px;
-  left: 51px;
-  overflow-y: auto;
-  position: absolute;
-  right: 51px;
-  top: 146px;
-  z-index: 0;
-}
-
-#fw1_trace {
-  position: absolute;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  width: 640px;
-}
-
-#fw1_trace table {
-  display: none;
-}
-
-body #logo path                   { fill: white; } /*#96FF96*/
 body.projecten #logo path         { fill: #BE8C64; }
 body.talent #logo path            { fill: #FFA0A0; }
 body.collectief #logo path        { fill: #64BEBE; }
 body.contact #logo path           { fill: white; }
 
-body .colored-border              { border-color: white; }
 body.projecten .colored-border    { border-color: #BE8C64; }
 body.talent .colored-border       { border-color: #FFA0A0; }
 body.collectief .colored-border   { border-color: #64BEBE; }
 body.contact .colored-border      { border-color: white; }
 
-body .colored-bg                  { background-color: white; }
 body.projecten .colored-bg        { background-color: #BE8C64; }
 body.talent .colored-bg           { background-color: #FFA0A0; }
 body.collectief .colored-bg       { background-color: #64BEBE; }
 body.contact .colored-bg          { background-color: white; }
 
-body .colored-text,            body a            { color: #96FF96; }
-body.projecten .colored-text,  body.projecten a  { color: #BE8C64; }
-body.talent .colored-text,     body.talent a     { color: #FFA0A0; }
-body.collectief .colored-text, body.collectief a { color: #64BEBE; }
-body.contact .colored-text,    body.contact a    { color: white; }
+body.projecten .colored-text,  body.projecten a,  body.projecten em  { color: #BE8C64; }
+body.talent .colored-text,     body.talent a,     body.talent em  { color: #FFA0A0; }
+body.collectief .colored-text, body.collectief a, body.collectief em  { color: #64BEBE; }
+body.contact .colored-text,    body.contact a,    body.contact em  { color: white; }
+
+nav ul, nav li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 nav.languages {
   position: absolute;
@@ -112,11 +129,11 @@ nav.languages a {
   color: white;
 }
 
-nav.level-1 {
+nav.level-1 ul {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
   bottom: 0;
   z-index: 1;
 }
@@ -125,59 +142,54 @@ nav.level-1 a {
   color: black;
 }
 
-nav.level-1 a:nth-child(2),
-nav.level-1 a:nth-child(3),
-nav.level-1 a:nth-child(4) {
+nav.level-1 li:nth-child(2),
+nav.level-1 li:nth-child(3),
+nav.level-1 li:nth-child(4) {
   background-color: white !important;
 }
 
-nav.level-1 a:nth-child(1),
-nav.level-1 a:nth-child(3) {
+nav.level-1 li:nth-child(1),
+nav.level-1 li:nth-child(3) {
   left: calc( 50% - 50px );
 }
 
-nav.level-1 a:nth-child(2),
-nav.level-1 a:nth-child(4) {
+nav.level-1 li:nth-child(2),
+nav.level-1 li:nth-child(4) {
   bottom: calc( 50% - 10px );
 }
 
-nav.level-1 a:nth-child(1) {
+nav.level-1 li:nth-child(1) {
   margin-top: -10px;
 }
 
-nav.level-1 a:nth-child(2) {
+nav.level-1 li:nth-child(2) {
   transform: rotate(90deg);
   right: -50px;
 }
 
-nav.level-1 a:nth-child(3) {
+nav.level-1 li:nth-child(3) {
   bottom: -10px;
 }
 
-nav.level-1 a:nth-child(4) {
+nav.level-1 li:nth-child(4) {
   transform: rotate(270deg);
   left: -50px;
 }
 
-nav.level-1 a,
-nav.contact a {
+nav.level-1 li,
+nav.contact li {
+  position: absolute;
+  z-index: 2;
   height: 20px;
   width: 100px;
-  font-size: 13px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  position: absolute;
-
-  z-index: 2;
+  font-size: 13px;
 }
 
-nav.level-1 a,
-nav.level-2 a,
-nav.contact a,
-nav.pagination a {
+nav {
   text-transform: uppercase;
 }
 
@@ -195,43 +207,60 @@ nav.level-2 a {
   border-bottom-style: solid;
 }
 
-nav.contact a {
+nav.contact li {
   background-color: #323232;
-  color: white;
   border: 1px solid white;
   width: 18px;
   height: 18px;
   bottom: -10px;
 }
 
-nav.contact a:nth-child(1) {
+nav.contact a {
+  color: white;
+}
+
+nav.contact img {
+  width: 18px;
+  height: 18px;
+}
+
+nav.contact li:nth-child(1) {
   left: calc( 50% - 110px );
 }
-nav.contact a:nth-child(2) {
+nav.contact li:nth-child(2) {
   left: calc( 50% - 80px );
 }
-nav.contact a:nth-child(3) {
+nav.contact li:nth-child(3) {
   left: calc( 50% - -60px );
 }
-nav.contact a:nth-child(4) {
+nav.contact li:nth-child(4) {
   left: calc( 50% - -90px );
 }
 
+nav.contact li:nth-child(1),
+nav.contact li:nth-child(2),
+nav.contact li:nth-child(3) {
+  align-items: flex-start;
+}
+
 nav.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   line-height: 2em;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+}
+
+nav.pagination ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 nav.pagination a {
   font-weight: 700;
 }
 
-nav.pagination a:nth-child(1),
-nav.pagination a:nth-child(3) {
+nav.pagination li:nth-child(1),
+nav.pagination li:nth-child(3) {
   font-weight: normal;
   font-size: 24px;
 }
