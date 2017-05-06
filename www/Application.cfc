@@ -1,16 +1,21 @@
 component extends=mustang.webmanager {
   request.appName = "tent-2017";
-  variables.framework.diConfig.constants.websiteId = 430;
-  variables.framework.diConfig.constants.imageSizes = {
-    "s" = [ 480 ],
-    "m" = [ 720 ],
-    "l" = [ 1152 ],
-    "x" = [ 1536 ]
-  };
-  variables.framework.diConfig.constants.config.templates = [
-    "templates.article",
-    "templates.show"
-  ];
+  request.domainName = "tent.eu";
 
-  // variables.framework.trace = true;
+  addToConstants( {
+    websiteId = 430,
+    imageSizes = {
+      "s" = [ 480 ],
+      "m" = [ 720 ],
+      "l" = [ 1152 ],
+      "x" = [ 1536 ]
+    },
+    config = {
+      templates = [
+        "templates.article",
+        "templates.show",
+        "templates.list"
+      ]
+    }
+  } );
 }

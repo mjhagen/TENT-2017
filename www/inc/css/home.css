@@ -14,6 +14,7 @@
   overflow: hidden;
   padding-right: 25px;
   border-right: 1px solid #96FF96;
+  height: 100%;
 }
 
 #home-calendar h3, #home-calendar h4, #home-calendar p {
@@ -67,8 +68,4 @@
   background-position: right;
 
   transition: 3s;
-}
-
-#carousel img {
-  display: none;
 }

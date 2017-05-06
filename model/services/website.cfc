@@ -1,5 +1,6 @@
 component accessors=true {
   property webmanagerService;
+  property calendarService;
   property utilityService;
 
   public void function rotateCurrentMenuToTop( required struct requestContext ) {
@@ -22,6 +23,19 @@ component accessors=true {
     }
 
     requestContext.navigation[ 1 ] = tmp;
+  }
+
+  public void function addCalendarToShowPages( required struct requestContext ) {
+    if ( requestContext.pageTemplate contains "show" ) {
+      requestContext.calendar = calendarService.getFirstByShow( 3, requestContext.currentMenuItem );
+    }
+  }
+
+  public void function addMediaQueriesToRequestScope( required struct requestContext ) {
+    requestContext.mediaQueries = [ { size = "s", width = 100 },
+                                    { size = "m", width = 480 },
+                                    { size = "l", width = 768 },
+                                    { size = "x", width = 1024 } ];
   }
 
   public array function getBackgroundImages( required struct requestContext ) {
@@ -53,7 +67,7 @@ component accessors=true {
         prev = navLength;
       }
 
-      if ( next >= navLength ) {
+      if ( next > navLength ) {
         next = 1;
       }
 

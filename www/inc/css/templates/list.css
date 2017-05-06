@@ -1,0 +1,69 @@
+.articles {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.articles .article,
+.articles .article .images,
+.articles .article .text {
+  display: flex;
+  float: left;
+  width:50%;
+}
+
+.articles .article .images {
+  padding-right: 25px;
+  flex: 1;
+}
+
+.articles .article .text{
+  flex: 2;
+}
+
+.articles .article .images .image {
+  width: 100%;
+  min-height: 10vw;
+  margin-bottom: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.articles .article .text p:first-child {
+  margin-top: 0;
+}
+
+.articles .article .text p:last-child {
+  margin-bottom: 25px;
+}
+
+.articles .article:nth-child(odd) .text {
+  padding-right: 25px;
+}
+
+@media only screen and (max-width: 479px) {
+  .articles .article,
+  .articles .article .images,
+  .articles .article .text {
+    display: initial;
+    padding: 0;
+    float: inherit;
+  }
+
+  .articles .article .images .image {
+    height: 50vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .articles .article,
+  .articles .article .images,
+  .articles .article .text {
+    width: inherit;
+  }
+
+  .articles .article:nth-child(odd) .text {
+    padding-right: 0;
+  }
+}

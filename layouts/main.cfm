@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>#len( rc.pageTitle ) ? rc.pageTitle & ' - ' : ''#TENT</title>
+    <title>#len( rc.pageTitle ) ? rc.pageTitle & ' - ' : ''##i18n.translate( 'tent-name' )#</title>
+
+    <script>
+      (function(d){var tkTimeout=3000;if(window.sessionStorage){if(sessionStorage.getItem('useTypekit')==='false'){tkTimeout=0;}}var config={kitId:'hgq8uwz',scriptTimeout: tkTimeout },h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";if(window.sessionStorage){sessionStorage.setItem("useTypekit","false")}},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)})(document);
+      var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-16870693-2']); _gaq.push(['_trackPageview']);
+      (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
+    </script>
+
     <link rel="stylesheet" type="text/css" href="/inc/css/main.css">
-    <cfif util.fileExistsUsingCache( root & "/www/inc/css/" & getItem( ) & ".css" )><link rel="stylesheet" type="text/css" href="/inc/css/#getItem( )#.css"></cfif>
+    <cfif util.fileExistsUsingCache( root & "/www/inc/css/" & getItem( request.action ) & ".css" )><link rel="stylesheet" type="text/css" href="/inc/css/#getItem( request.action )#.css"></cfif>
     <cfif not isNull( rc.stylesheet ) and util.fileExistsUsingCache( root & "/www" & rc.stylesheet )><link rel="stylesheet" type="text/css" href="#rc.stylesheet#"></cfif>
     <link rel="stylesheet" type="text/css" href="/inc/css/responsive.css">
   </head>
@@ -30,8 +37,7 @@
         #view( "elements/nav-level-2" )#
         #body#
       </div>
-    </path>
-    <script>(function(d){var tkTimeout=3000;if(window.sessionStorage){if(sessionStorage.getItem('useTypekit')==='false'){tkTimeout=0;}}var config={kitId:'hgq8uwz',scriptTimeout: tkTimeout },h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";if(window.sessionStorage){sessionStorage.setItem("useTypekit","false")}},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)})(document);</script>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/inc/js/main.js"></script>
     <cfif util.fileExistsUsingCache( root & "/www/inc/js/" & getItem( ) & ".js" )><script src="/inc/js/#getItem( )#.js"></script></cfif>

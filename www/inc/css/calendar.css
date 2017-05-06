@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #96FF96;
+}
+
+td {
+  border-bottom: 1px dotted #4f8c4f;
+  line-height: 1.8em;
+  text-transform: uppercase;
+  padding-right: 25px;
+}
+
+#calendar {
+  font-size: 14px;
+}
+
+#calendar nav {
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #96FF96;
+}
+
+#calendar nav a.active {
+  font-weight: bold;
+}

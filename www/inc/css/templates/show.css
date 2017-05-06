@@ -18,10 +18,12 @@
 .article .images .videoWrapper {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
+  margin-bottom: 25px;
 }
 
 .article .images .videoWrapper iframe {
   position: absolute;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
@@ -36,6 +38,7 @@
   flex-direction: column;
   width: 67%;
   margin-left: calc( 33% + 25px );
+  font-size: 15px;
 }
 
 .article .show {
@@ -51,14 +54,15 @@
 
 .calendar {
   text-transform: uppercase;
+  margin-top: 25px;
 }
 
 .calendar h3, .calendar h4, .crew-calendar p {
   margin: 0;
 }
 
-.crew h3 {
-  margin: 1em 0 0 0;
+.crew {
+  margin-top: 1em;
 }
 
 .calendar h3 {

@@ -1,3 +1,7 @@
+<cfif not rc.calendar.recordCount>
+  <cfexit />
+</cfif>
+
 <cfoutput>
   <section id="show-calendar">
     <h3>#i18n.translate( 'schedule' )#</h3>
@@ -18,6 +22,6 @@
       </div>
     </cfloop>
 
-    <h3><a href="/_calendar">#i18n.translate( 'show-full-schedule' )#</a></h3>
+    <h3><a href="/calendar/?show=#rc.currentMenuItem#">#i18n.translate( 'show-full-schedule' )#</a></h3>
   </section>
 </cfoutput>

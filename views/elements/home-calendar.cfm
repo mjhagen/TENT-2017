@@ -23,7 +23,7 @@
         <p>#where#</p>
 
         <p>
-          <cfif dateDiff( 'd', start, end ) lte 1>
+          <cfif dateDiff( 'd', start, end ) lt 1>
             <time>#lsDateFormat( start, 'd/m/yyyy' )#</time>
           <cfelse>
             <time>#lsDateFormat( start, 'd/m' )#</time> t/m <time>#lsDateFormat( end, 'd/m' )#</time>
@@ -35,6 +35,6 @@
       </div>
     </cfloop>
 
-    <h3><a href="/_calendar">#i18n.translate( 'show-more' )#</a></h3>
+    <h3><a href="/calendar">#i18n.translate( 'show-more' )#</a></h3>
   </section>
 </cfoutput>

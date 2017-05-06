@@ -13,6 +13,10 @@ component accessors=true {
     return this;
   }
 
+  public query function getAll() {
+    return variables.fullCalendar;
+  }
+
   public query function getFirst( required numeric limit = 3 ) {
     var queryService = new query( qoq = variables.fullCalendar, dbtype = "query", maxRows = limit );
 

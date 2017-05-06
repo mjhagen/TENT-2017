@@ -1,5 +1,20 @@
 {
   "tent-name": "TENT Circustheater producties",
   "coming-soon": "Binnenkort te zien",
-  "show-more": "Meer te zien &gt;"
+  "show-more": "Meer te zien &gt;",
+  "credits": "Credits",
+  "schedule": "Speellijst",
+  "show-full-schedule": "Bekijk volledige speellijst",
+  "twitter": "Twitter",
+  "facebook": "Facebook",
+  "instagram": "Instagram",
+  "newsletter": "Nieuwsbrief",
+  "full-calendar": "Agenda",
+  "date-format": "dd/mm/yyyy",
+  "time-format": "HH:mm",
+  "title": "Wat",
+  "where": "Waar",
+  "when": "Wanneer",
+  "time": "Tijd",
+  "info": "Info"
 }

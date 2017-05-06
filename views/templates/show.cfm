@@ -24,7 +24,7 @@
     </div>
     <div class="crew-calendar colored-text">
       <div class="crew">
-        <h3>#i18n.translate( 'credit' )#</h3>
+        <!--- <h3>#i18n.translate( 'credits' )#</h3> --->
         #rc.articles[ 2 ].body#
       </div>
       <div class="calendar">
