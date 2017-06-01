@@ -11,7 +11,7 @@
 #home-calendar {
   color: #96FF96;
   text-transform: uppercase;
-  overflow: hidden;
+  /*overflow: hidden;*/
   padding-right: 25px;
   border-right: 1px solid #96FF96;
   height: 100%;
@@ -21,10 +21,18 @@
   margin: 0;
 }
 
+#home-calendar p {
+  font-size: 13px;
+}
+
 #home-calendar h3 {
   line-height: 2em;
   border: 0 dotted #96FF96;
   font-size: inherit;
+}
+
+#home-calendar h3 a {
+  float: right;
 }
 
 #home-calendar h3:first-child {

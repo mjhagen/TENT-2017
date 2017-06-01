@@ -1,12 +1,11 @@
 <cfoutput>
-  <!--- <h1>#i18n.translate( 'full-calendar' )#</h1> --->
-
   <div id="calendar">
-    <cfif structKeyExists( rc, "year" )>
+    <cfif structKeyExists( rc, "years" )>
       <nav>
         <ul>
-          <cfloop from="#rc.years[ 1 ]#" to="#rc.years[ 2 ]#" index="yr">
-            <li><a class="#rc.year eq yr ? 'active' : ''#" href="?year=#yr#">#yr#</a>#yr lt rc.years[ 2 ] ? ' |' : ''#</li>
+          <li><a href="?year=0"#rc.year eq 0?' class="active"':''#>#i18n.translate( 'upcoming' )#</a></li>
+          <cfloop from="#rc.years[ 1 ]#" to="#rc.years[ 2 ]#" index="yr" step="-1">
+            <li> | <a#rc.year eq yr?' class="active"':''# href="?year=#yr#">#yr#</a></li>
           </cfloop>
         </ul>
       </nav>
@@ -33,7 +32,7 @@
             <cfelse>
               <td nowrap="nowrap">#timeFormat( start, i18n.translate( 'time-format' ) )# - #timeFormat( end, i18n.translate( 'time-format' ) )#</td>
             </cfif>
-            <td>#util.activateURL( input = link, replaceWith = i18n.translate( 'info' ) )#</td>
+            <td>#util.activateURL( input = link, replaceWith = i18n.translate( 'info' ), target = "_blank" )#</td>
           </tr>
           <cfif dateDiff( 'd', start, end ) gt 0>
             <cfset index = 0 />
@@ -54,7 +53,7 @@
                 <cfelse>
                   <td nowrap="nowrap">#timeFormat( localData.start, i18n.translate( 'time-format' ) )# - #timeFormat( localData.end, i18n.translate( 'time-format' ) )#</td>
                 </cfif>
-                <td>#util.activateURL( input = localData.link, replaceWith = i18n.translate( 'info' ) )#</td>
+                <td>#util.activateURL( input = localData.link, replaceWith = i18n.translate( 'info' ), target = "_blank" )#</td>
               </tr>
             </cfloop>
           </cfif>

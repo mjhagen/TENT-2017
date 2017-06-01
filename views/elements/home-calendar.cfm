@@ -1,6 +1,9 @@
 <cfoutput>
   <section id="home-calendar">
-    <h3>#i18n.translate( 'coming-soon' )#</h3>
+    <h3>
+      #i18n.translate( 'coming-soon' )#
+      <a href="#rc.basePath#/calendar">#i18n.translate( 'show-more' )#</a>
+    </h3>
 
     <cfloop query="rc.calendar">
       <div>
@@ -34,7 +37,5 @@
         </p>
       </div>
     </cfloop>
-
-    <h3><a href="/calendar">#i18n.translate( 'show-more' )#</a></h3>
   </section>
 </cfoutput>

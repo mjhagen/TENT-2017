@@ -20,7 +20,8 @@ component accessors=true {
   public query function getFirst( required numeric limit = 3 ) {
     var queryService = new query( qoq = variables.fullCalendar, dbtype = "query", maxRows = limit );
 
-    queryService.setSQL( " SELECT * FROM qoq " );
+    queryService.setSQL( " SELECT * FROM qoq WHERE [start] > :nu ORDER BY [start] " );
+    queryService.addParam( name="nu", value=now() );
 
     return queryService.execute( ).getResult( );
   }
@@ -63,6 +64,15 @@ component accessors=true {
     queryService.setSQL( sql & " AND [start] BETWEEN ? AND ? " );
     queryService.addParam( value = createDate( yearSelection, 1, 1 ) );
     queryService.addParam( value = createDate( yearSelection + 1, 1, 1 ) );
+
+    return queryService.execute( ).getResult( );
+  }
+
+  public query function getUpcoming( ) {
+    var queryService = new query( qoq = variables.fullCalendar, dbtype = "query" );
+
+    queryService.setSQL( " SELECT * FROM qoq WHERE [start] > :nu ORDER BY [start] " );
+    queryService.addParam( name="nu", value=now() );
 
     return queryService.execute( ).getResult( );
   }
@@ -154,7 +164,7 @@ component accessors=true {
               "name" = entry.attachments[ 1 ].title
             };
 
-            thread action="run" name="resizeImage" threadVars=threadVars {
+            thread action="run" name="resizeImage-#hash( createUUID( ) )#" threadVars=threadVars {
               threadVars.scaler.resizeFromBaos( threadVars.image, threadVars.name, "m" );
             }
 
@@ -175,8 +185,6 @@ component accessors=true {
     var queryService = new query( qoq = agendaQuery,
                                dbtype = "query",
                                   SQL = "SELECT DISTINCT * FROM qoq ORDER BY [start] DESC" );
-
-
 
     return queryService.execute( ).getResult( );
   }

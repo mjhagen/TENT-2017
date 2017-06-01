@@ -4,7 +4,10 @@
 
 <cfoutput>
   <section id="show-calendar">
-    <h3>#i18n.translate( 'schedule' )#</h3>
+    <h3>
+      #i18n.translate( 'schedule' )#
+      <a href="/calendar/?show=#rc.currentMenuItem#">#i18n.translate( 'show-full-schedule' )#</a>
+    </h3>
 
     <cfloop query="rc.calendar">
       <div>
@@ -21,7 +24,5 @@
         </p>
       </div>
     </cfloop>
-
-    <h3><a href="/calendar/?show=#rc.currentMenuItem#">#i18n.translate( 'show-full-schedule' )#</a></h3>
   </section>
 </cfoutput>

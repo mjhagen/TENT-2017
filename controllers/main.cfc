@@ -16,30 +16,35 @@ component accessors=true {
     websiteService.addCalendarToShowPages( rc );
   }
 
-  public void function setupLevel2( required struct rc ) {
+  public void function setupLevel3( required struct rc ) {
     rc.pagination = websiteService.navigationAsPagination( rc );
   }
 
   public void function home( required struct rc ) {
     rc.calendar = calendarService.getFirst( 3 );
-    rc.backGroundImages = websiteService.getBackgroundImages( rc );
+    rc.backGroundImages = websiteService.getShuffledBackgroundImages( rc );
   }
 
   public void function calendar( required struct rc ) {
-    fullCalendar = calendarService.getAll();
-
     if ( structKeyExists( rc, "show" ) ) {
       rc.calendar = calendarService.getByShow( rc.show );
       framework.abortController( );
     }
 
-    param rc.year=year( fullCalendar.start[ 1 ] );
+    var fullCalendar = calendarService.getAll();
 
     rc.years = [
-      year( fullCalendar.start[ fullCalendar.recordCount ] ),
-      year( fullCalendar.start[ 1 ] )
+      year( fullCalendar.start[ 1 ] ),
+      year( fullCalendar.start[ fullCalendar.recordCount ] )
     ];
 
-    rc.calendar = calendarService.getByYear( rc.year );
+    param rc.year=0;
+
+    if ( rc.year > 0 ) {
+      rc.calendar = calendarService.getByYear( rc.year );
+      framework.abortController( );
+    }
+
+    rc.calendar = calendarService.getUpcoming( );
   }
 }

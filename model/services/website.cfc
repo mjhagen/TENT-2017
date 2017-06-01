@@ -46,9 +46,15 @@ component accessors=true {
     return requestContext.articles[ 1 ].images;
   }
 
+  public array function getShuffledBackgroundImages( required struct requestContext ) {
+    var result = getBackgroundImages( requestContext );
+    createObject( "java", "java.util.Collections" ).shuffle( result );
+    return result;
+  }
+
   public array function navigationAsPagination( required struct requestContext ) {
     try {
-      var level = listLen( requestContext.navPath ) + 1;
+      var level = requestContext.currentLevel;
       var items = requestContext.navigation[ level ];
       var navLength = arrayLen( items );
       var current = 0;

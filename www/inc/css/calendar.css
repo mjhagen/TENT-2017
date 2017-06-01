@@ -29,3 +29,54 @@ td {
 #calendar nav a.active {
   font-weight: bold;
 }
+
+@media only screen and (min-width: 300px) and (max-width: 375px) {
+  table {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 900px) {
+  table,
+  thead,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td {
+    display: inline;
+    border-bottom: 0;
+    padding-right: 10px;
+  }
+
+  tr {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px dotted #4f8c4f;
+  }
+
+  tr,
+  td {
+    float: left;
+  }
+
+  td:nth-child(1) {
+    font-weight: bold;
+  }
+
+  td:nth-child(1),
+  td:nth-child(2)
+  {
+    width: 100%;
+  }
+
+  td:last-child
+  {
+    width: 100%;
+  }
+}

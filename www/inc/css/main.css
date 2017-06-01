@@ -103,24 +103,32 @@ time {
 .colored-bg                       { background-color: white; }
 .colored-text, a, em              { color: #96FF96; }
 
-body.projecten #logo path         { fill: #BE8C64; }
+body.projecten #logo path,
+body.projects #logo path         { fill: #BE8C64; }
 body.talent #logo path            { fill: #FFA0A0; }
-body.collectief #logo path        { fill: #64BEBE; }
+body.collectief #logo path,
+body.collective #logo path        { fill: #64BEBE; }
 body.contact #logo path           { fill: white; }
 
-body.projecten .colored-border    { border-color: #BE8C64; }
+body.projecten .colored-border,
+body.projects .colored-border    { border-color: #BE8C64; }
 body.talent .colored-border       { border-color: #FFA0A0; }
-body.collectief .colored-border   { border-color: #64BEBE; }
+body.collectief .colored-border,
+body.collective .colored-border   { border-color: #64BEBE; }
 body.contact .colored-border      { border-color: white; }
 
-body.projecten .colored-bg        { background-color: #BE8C64; }
+body.projecten .colored-bg,
+body.projects .colored-bg        { background-color: #BE8C64; }
 body.talent .colored-bg           { background-color: #FFA0A0; }
-body.collectief .colored-bg       { background-color: #64BEBE; }
+body.collectief .colored-bg,
+body.collective .colored-bg       { background-color: #64BEBE; }
 body.contact .colored-bg          { background-color: white; }
 
-body.projecten .colored-text,  body.projecten a,  body.projecten em  { color: #BE8C64; }
+body.projecten .colored-text,  body.projecten a,  body.projecten em,
+body.projects .colored-text,  body.projects a,  body.projects em  { color: #BE8C64; }
 body.talent .colored-text,     body.talent a,     body.talent em  { color: #FFA0A0; }
-body.collectief .colored-text, body.collectief a, body.collectief em  { color: #64BEBE; }
+body.collectief .colored-text, body.collectief a, body.collectief em,
+body.collective .colored-text, body.collective a, body.collective em  { color: #64BEBE; }
 body.contact .colored-text,    body.contact a,    body.contact em  { color: white; }
 
 nav ul, nav li {

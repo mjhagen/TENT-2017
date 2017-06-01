@@ -18,7 +18,7 @@
   </head>
   <body class="#rc.currentBaseMenuItem#">
     <div id="wrapper">
-      <a href="/" title="Home"><svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337.5 75">
+      <a href="#rc.basePath#/" title="Home"><svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337.5 75">
         <desc>Home (TENT Logo)</desc>
         <path d="M0 25V0h25L0 25zm50 0V0H25l25 25zm25 0V0H50l25 25zM50 50V25H25l25
                  25zm0 25V50H25l25 25zm37.5-25h25v25l-25-25zm25-25h-25v25l25-25zm0-25h-25v25l25-25zm25

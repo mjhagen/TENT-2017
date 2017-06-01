@@ -19,6 +19,7 @@
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   margin-bottom: 25px;
+  z-index: 5;
 }
 
 .article .images .videoWrapper iframe {
@@ -63,6 +64,10 @@
 
 .crew {
   margin-top: 1em;
+}
+
+.calendar h3 a {
+  float: right;
 }
 
 .calendar h3 {

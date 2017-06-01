@@ -2,6 +2,8 @@ component extends=mustang.webmanager {
   request.appName = "tent-2017";
   request.domainName = "tent.eu";
 
+  this.mappings[ "/google" ] = "D:\Dropbox\Projects\google-calendar-v3";
+
   addToConstants( {
     websiteId = 430,
     imageSizes = {
@@ -11,6 +13,8 @@ component extends=mustang.webmanager {
       "x" = [ 1536 ]
     },
     config = {
+      showDebug = false,
+      logLevel = "error",
       templates = [
         "templates.article",
         "templates.show",

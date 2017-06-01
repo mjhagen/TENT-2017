@@ -1,12 +1,21 @@
 {
-  "tent-name": "TENT Circus Theater Productions",
-  "coming-soon": "Coming Soon",
-  "show-more": "Show More &gt;",
+  "coming-soon": "Soon",
   "credits": "Credits",
-  "schedule": "Schedule",
-  "show-full-schedule": "Show Full Schedule",
-  "twitter": "Twitter",
+  "date-format": "dd/mm/yyyy",
   "facebook": "Facebook",
+  "full-calendar": "Calendar",
+  "info": "Info",
   "instagram": "Instagram",
-  "newsletter": "News Letter"
+  "newsletter": "News Letter",
+  "schedule": "Schedule",
+  "show-full-schedule": "Full Schedule &raquo;",
+  "show-more": "More &raquo;",
+  "tent-name": "TENT",
+  "time": "Time",
+  "time-format": "HH:mm",
+  "title": "What",
+  "twitter": "Twitter",
+  "upcoming": "Soon",
+  "when": "When",
+  "where": "Where"
 }
