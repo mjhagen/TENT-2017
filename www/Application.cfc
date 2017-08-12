@@ -12,14 +12,6 @@ component extends=mustang.webmanager {
       "l" = [ 1152 ],
       "x" = [ 1536 ]
     },
-    config = {
-      showDebug = false,
-      logLevel = "error",
-      templates = [
-        "templates.article",
-        "templates.show",
-        "templates.list"
-      ]
-    }
+    config = readConfig( )
   } );
 }

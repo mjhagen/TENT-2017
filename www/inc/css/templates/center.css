@@ -1,0 +1,29 @@
+.article {
+  margin: 0 auto;
+}
+
+.article p {
+  text-align: center;
+}
+
+.article img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 300px) {
+  .article {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .article {
+    width: 67%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .article {
+    width: 50%;
+  }
+}

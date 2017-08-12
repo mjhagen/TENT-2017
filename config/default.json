@@ -1,0 +1,10 @@
+{
+  "showDebug": false,
+  "logLevel": "error",
+  "templates": [
+    "templates.article",
+    "templates.show",
+    "templates.list",
+    "templates.center"
+  ]
+}
