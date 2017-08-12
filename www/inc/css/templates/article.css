@@ -20,7 +20,7 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .article {
+  .article p {
     margin-left: calc( 25% + 5px );
     margin-right: calc( 25% + 5px );
   }
