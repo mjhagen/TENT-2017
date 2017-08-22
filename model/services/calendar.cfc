@@ -8,7 +8,7 @@ component accessors=true {
     variables.imageScalerService = imageScalerService;
     variables.imageScalerService.setDestinationDir( '#root#/www/inc/img/resized' );
 
-    variables.fullCalendar = setupCalendar( );
+    setupCalendar( );
 
     return this;
   }
@@ -77,12 +77,19 @@ component accessors=true {
     return queryService.execute( ).getResult( );
   }
 
-  private query function setupCalendar( ) {
+  private void function setupCalendar( ) {
+    var cacheId = "tent-google-calendar";
+    var cachedCalendar = cacheGet( cacheId );
+
+    if ( !isNull( cachedCalendar ) ) {
+      variables.fullCalendar = cachedCalendar;
+      return;
+    }
+
     var agendaURLStruct = {
       "name" = "x",
       "id" = "l6ts3voo9ga5c8e169lhn2n2bc@group.calendar.google.com"
     };
-
     var agendaQuery = queryNew( "type,title,start,end,where,link,attachments", "varchar,varchar,date,date,varchar,varchar,varchar" );
     var googleCalendar = new google.calendar(
       appName = "tent-calendars-#agendaURLStruct.name#",
@@ -186,6 +193,8 @@ component accessors=true {
                                dbtype = "query",
                                   SQL = "SELECT DISTINCT * FROM qoq ORDER BY [start] DESC" );
 
-    return queryService.execute( ).getResult( );
+    variables.fullCalendar = queryService.execute( ).getResult( );
+
+    cachePut( cacheId, variables.fullCalendar );
   }
 }

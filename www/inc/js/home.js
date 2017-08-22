@@ -9,10 +9,14 @@ $( function( ) {
     window.clearTimeout( );
     setTimeout( function( ) {
       var cfIndex = i + 1;
-      $( "#carousel div" )
+      $( "#carousel>div.image" )
         .removeClass( "responsive-image-" + ( cfIndex - 1 ) )
         .removeClass( "responsive-image-" + numberOfImages )
         .addClass( "responsive-image-" + cfIndex );
+
+      $( "#carousel>div.quotes" ).fadeOut( 1500 );
+      $( "#carousel>div.quote-" + cfIndex ).fadeIn( 1500 );
+
       if ( ( k + 1 ) === numberOfImages ) {
         k = 0;
         setTimeout( function( ) {

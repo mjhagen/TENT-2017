@@ -69,11 +69,29 @@
   bottom: 0;
 }
 
-#carousel div {
+#carousel .image {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
 
   transition: 3s;
+}
+
+#carousel .quotes {
+  display: none;
+  position: absolute;
+  top: 45%;
+  width: 33%;
+  border-width: 1px 0;
+  border-color: #96FF96;
+  border-style: solid;
+  padding: 15px 25px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#carousel .author {
+  font-weight: normal;
 }
