@@ -1,11 +1,12 @@
 component accessors=true {
+  property logService;
   property utilityService;
   property imageScalerService;
   property query fullCalendar;
 
-  public component function init( utilityService, imageScalerService, root ) {
-    variables.utilityService = utilityService;
-    variables.imageScalerService = imageScalerService;
+  public component function init( logService, utilityService, imageScalerService, root ) {
+    structAppend( variables, arguments );
+
     variables.imageScalerService.setDestinationDir( '#root#/www/inc/img/resized' );
 
     setupCalendar( );
@@ -81,7 +82,8 @@ component accessors=true {
     var cacheId = "tent-google-calendar";
     var cachedCalendar = cacheGet( cacheId );
 
-    if ( !isNull( cachedCalendar ) ) {
+    if ( !isNull( cachedCalendar ) && !request.reset ) {
+      variables.logService.writeLogLevel( "Using cached calendar" );
       variables.fullCalendar = cachedCalendar;
       return;
     }
@@ -111,80 +113,86 @@ component accessors=true {
         var recurringEvents = [ event ];
       }
 
-      for ( var entry in recurringEvents ) {
-        entry = duplicate( entry );
+      for ( var tempEntry in recurringEvents ) {
+        entry = duplicate( tempEntry );
 
-        try {
-          if ( entry.status == "canceled" ) {
-            continue;
-          }
+        if ( entry.status == "canceled" ) {
+          continue;
+        }
 
-          var numberOfDays = 0;
-          var startDate = structKeyExists( entry.start, "dateTime" ) ? entry.start.dateTime : entry.start.date;
-          var endDate = structKeyExists( entry.end, "dateTime" ) ? entry.end.dateTime : entry.end.date;
+        var numberOfDays = 0;
+        var startDate = structKeyExists( entry.start, "dateTime" ) ? entry.start.dateTime : entry.start.date;
+        var endDate = structKeyExists( entry.end, "dateTime" ) ? entry.end.dateTime : entry.end.date;
 
-          if ( !isNull( startDate ) ) {
-            startDate = googleCalendar.dateConvertISO8601( startDate.toStringRfc3339( ) );
+        if ( !isNull( startDate ) ) {
+          startDate = googleCalendar.dateConvertISO8601( startDate.toStringRfc3339( ) );
+        }
+
+        if ( !isNull( endDate ) ) {
+          endDate = googleCalendar.dateConvertISO8601( endDate.toStringRfc3339( ) );
+          numberOfDays = max( 0, dateDiff( 'd', startDate, endDate ) - 1 );
+        }
+
+        for ( var dayNumber = 0; dayNumber <= numberOfDays; dayNumber++ ) {
+          queryAddRow( agendaQuery );
+          var row = agendaQuery.recordCount;
+
+          querySetCell( agendaQuery, "start", startDate, row );
+          querySetCell( agendaQuery, "type", agendaURLStruct.name, row );
+          querySetCell( agendaQuery, "title", entry.summary, row );
+          querySetCell( agendaQuery, "where", entry.location, row );
+
+          if ( structKeyExists( entry, "description" ) ) {
+            querySetCell( agendaQuery, "link", entry.description, row );
           }
 
           if ( !isNull( endDate ) ) {
-            endDate = googleCalendar.dateConvertISO8601( endDate.toStringRfc3339( ) );
-            numberOfDays = max( 0, dateDiff( 'd', startDate, endDate ) - 1 );
+            querySetCell( agendaQuery, "end", endDate, row );
           }
 
-          for ( var dayNumber = 0; dayNumber <= numberOfDays; dayNumber++ ) {
-            queryAddRow( agendaQuery );
-            var row = agendaQuery.recordCount;
+          if ( !structKeyExists( entry, "attachments" ) ) {
+            continue;
+          }
 
-            querySetCell( agendaQuery, "start", startDate, row );
-            querySetCell( agendaQuery, "type", agendaURLStruct.name, row );
-            querySetCell( agendaQuery, "title", entry.summary, row );
-            querySetCell( agendaQuery, "where", entry.location, row );
+          if ( arrayIsEmpty( entry.attachments ) ) {
+            continue;
+          }
 
-            if ( structKeyExists( entry, "description" ) ) {
-              querySetCell( agendaQuery, "link", entry.description, row );
-            }
+          var attachments = [ ];
+          for ( var attachment in entry.attachments ) {
+            if ( !isNull( attachment.fileId ) ) {
+              arrayAppend( attachments, attachment.title );
 
-            if ( !isNull( endDate ) ) {
-              querySetCell( agendaQuery, "end", endDate, row );
-            }
-
-            if ( !structKeyExists( entry, "attachments" ) ) {
-              continue;
-            }
-
-            if ( arrayIsEmpty( entry.attachments ) ) {
-              continue;
-            }
-
-            try {
-              var attachedFile = googleCalendar.getFile( entry.attachments[ 1 ].fileId );
-            } catch ( any e ) {
-              if ( structKeyExists( e, "StatusCode" ) && val( e.StatusCode ) == 404 ) {
+              if ( imageScalerService.skipResize( "m", attachment.title ) ) {
                 continue;
               }
-            }
 
-            var threadVars = {
-              "scaler" = imageScalerService,
-              "image" = attachedFile,
-              "name" = entry.attachments[ 1 ].title
-            };
+              var threadVars = {
+                "scaler" = imageScalerService,
+                "logger" = logService,
+                "google" = googleCalendar,
+                "attachment" = attachment
+              };
 
-            thread action="run" name="resizeImage-#hash( createUUID( ) )#" threadVars=threadVars {
-              threadVars.scaler.resizeFromBaos( threadVars.image, threadVars.name, "m" );
-            }
+              logService.writeLogLevel( "Queed image resize for #attachment.title#" );
 
-            var attachments = [ ];
-            for ( var attachment in entry.attachments ) {
-              arrayAppend( attachments, attachment.title );
+              thread action="run" name="resizeImage-#hash( createUUID( ) )#" threadVars=threadVars priority="low" {
+                thread.attachment = duplicate( threadVars.attachment );
+
+                try {
+                  threadVars.logger.writeLogLevel( "Retrieving image from Google drive" );
+                  var googleDriveFile = threadVars.google.getFile( thread.attachment.fileId );
+                  sleep( 300 );
+                  threadVars.logger.writeLogLevel( "Resizing" );
+                  threadVars.scaler.resizeFromBaos( googleDriveFile, thread.attachment.title, "m" );
+                } catch ( any e ) {
+                  threadVars.logger.writeLogLevel( text = "Image resize error: " & e.message & " - " & e.detail, level = "error" );
+                }
+              }
             }
-            querySetCell( agendaQuery, "attachments", arrayToList( attachments ), row );
           }
-        } catch ( any e ) {
-          writeDump( e );
-          writeDump( entry );
-          abort;
+
+          querySetCell( agendaQuery, "attachments", arrayToList( attachments ), row );
         }
       }
     }
@@ -196,5 +204,7 @@ component accessors=true {
     variables.fullCalendar = queryService.execute( ).getResult( );
 
     cachePut( cacheId, variables.fullCalendar );
+
+    variables.logService.writeLogLevel( "Calendar reloaded" );
   }
 }

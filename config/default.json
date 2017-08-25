@@ -6,5 +6,8 @@
     "templates.show",
     "templates.list",
     "templates.center"
-  ]
+  ],
+  "paths": {
+    "google": "D:/Accounts/G/google-calendar-v3"
+  }
 }

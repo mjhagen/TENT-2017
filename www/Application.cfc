@@ -2,7 +2,9 @@ component extends=mustang.webmanager {
   request.appName = "tent-2017";
   request.domainName = "tent.eu";
 
-  this.mappings[ "/google" ] = "D:\Dropbox\Projects\google-calendar-v3";
+  variables.cfg = readConfig( );
+
+  this.mappings[ "/google" ] = cfg.paths.google;
 
   addToConstants( {
     websiteId = 430,
@@ -12,6 +14,6 @@ component extends=mustang.webmanager {
       "l" = [ 1152 ],
       "x" = [ 1536 ]
     },
-    config = readConfig( )
+    config = cfg
   } );
 }
