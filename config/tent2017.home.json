@@ -1,3 +1,6 @@
 {
-  "mediaRoot": "G:/Dropbox/Projects/ProjectsTemporaryFiles/webmanager/files/"
+  "mediaRoot": "G:/Dropbox/Projects/ProjectsTemporaryFiles/webmanager/files/",
+  "paths": {
+    "google": "G:/Dropbox/Projects/google-calendar-v3"
+  }
 }
