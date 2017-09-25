@@ -1,5 +1,5 @@
 {
-  "logLevel": "information",
+  "logLevel": "debug",
   "mediaRoot": "D:/Dropbox/Projects/ProjectsTemporaryFiles/webmanager/files/",
   "paths": {
     "google": "D:/Dropbox/Projects/google-calendar-v3"

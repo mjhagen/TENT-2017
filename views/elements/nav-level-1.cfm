@@ -1,3 +1,7 @@
+<cfif arrayIsEmpty( rc.navigation )>
+  <cfexit />
+</cfif>
+
 <cfoutput>
   <nav class="level-1"><ul>
     <cfloop array="#rc.navigation[ 1 ]#" index="item">

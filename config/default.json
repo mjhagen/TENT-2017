@@ -1,6 +1,7 @@
 {
-  "showDebug": false,
+  "defaultLanguage": "nl_NL",
   "logLevel": "error",
+  "showDebug": false,
   "templates": [
     "templates.article",
     "templates.show",
