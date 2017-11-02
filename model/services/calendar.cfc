@@ -45,12 +45,12 @@ component accessors=true {
     var queryService = new query( argumentCollection = args );
 
     if ( isSimpleValue( currentShow ) ) {
-      queryService.setSQL( sql & " AND LOWER( title ) = ? " );
-      queryService.addParam( value = lCase( currentShow ) );
+      queryService.setSQL( sql & " AND LOWER( title ) LIKE ? " );
+      queryService.addParam( value = lCase( currentShow ) & "%" );
     } else if ( isArray( currentShow ) ) {
       for ( var showName in currentShow ) {
-        sql &= " OR LOWER( title ) = ? ";
-        queryService.addParam( value = lCase( currentShow ) );
+        sql &= " OR LOWER( title ) LIKE ? ";
+        queryService.addParam( value = lCase( currentShow ) & "%" );
       }
       queryService.setSQL( sql );
     }
