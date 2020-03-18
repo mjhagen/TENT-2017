@@ -35,6 +35,21 @@
   nav.pagination {
     width: calc( 100% - 80px );
   }
+
+  nav.level-2 li {
+    cursor: pointer;
+    flex-basis: 100%;
+    background-size: cover;
+    text-align: center;
+    height: 25vw;
+    margin-bottom: 15vw;
+    line-height: 60vw;
+  }
+
+  nav.level-2 li:after {
+    content: '';
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 480px) {

@@ -1,13 +1,33 @@
 component accessors=true {
   property framework;
   property websiteService;
-  property webmanagerService;
   property calendarService;
+  property dataService;
 
   public void function before( required struct rc ) {
-    webmanagerService.appendPageDataToRequestContext( rc ); // <-- required
+    rc.ws.setNavigationType( 'full' );
+    rc.ws.appendPageDataToRequestContext( rc ); // <-- required
 
-    if ( !webmanagerService.actionHasView( rc.action ) ) {
+    rc.alt_navigation = [
+      [],
+      dataService.keyValuePairFind( rc.fullNavigation, 'parentId', rc.currentBaseMenuItemId, 'all' )
+    ];
+
+    if ( !isNull( rc.alt_navigation[ 2 ] ) ) {
+      rc.alt_navigation[ 2 ].each( function( menuItem ) {
+        var teaserImages = rc.ws.getArticles( menuItem.menuId ).filter( function( article, idx ) {
+          // only use first article, only if it has an image
+          return idx == 1 && article.images.len();
+        } ).map( function( article ) {
+          // return just the first image
+          return article.images[ 1 ];
+        } );
+
+        if ( teaserImages.len() ) menuItem[ 'teaserImage' ] = teaserImages[ 1 ];
+      } );
+    }
+
+    if ( !rc.ws.actionHasView( rc.action ) ) {
       framework.setView( rc.pageTemplate );
     }
 
