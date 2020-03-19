@@ -13,7 +13,7 @@ component accessors=true {
       dataService.keyValuePairFind( rc.fullNavigation, 'parentId', rc.currentBaseMenuItemId, 'all' )
     ];
 
-    if ( !isNull( rc.alt_navigation[ 2 ] ) ) {
+    if ( rc.alt_navigation.isDefined( 2 ) ) {
       rc.alt_navigation[ 2 ].each( function( menuItem ) {
         var teaserImages = rc.ws.getArticles( menuItem.menuId ).filter( function( article, idx ) {
           // only use first article, only if it has an image
