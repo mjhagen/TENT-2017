@@ -1,82 +1,23 @@
-table {
-  width: 100%;
+table { width: 100%; }
+th { text-align: left; text-transform: uppercase; padding-bottom: 10px; border-bottom: 1px solid #96FF96; }
+td { border-bottom: 1px dotted #4f8c4f; line-height: 1.8em; text-transform: uppercase; padding-right: 25px; }
+#calendar { font-size: 14px; }
+#calendar nav { padding-bottom: 15px; margin-bottom: 10px; border-bottom: 1px solid #96FF96; }
+#calendar nav a.active { font-weight: bold; }
+@media only screen and (min-width:300px) and (max-width:375px) {
+  table { font-size: 13px; }
 }
-
-th {
-  text-align: left;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #96FF96;
-}
-
-td {
-  border-bottom: 1px dotted #4f8c4f;
-  line-height: 1.8em;
-  text-transform: uppercase;
-  padding-right: 25px;
-}
-
-#calendar {
-  font-size: 14px;
-}
-
-#calendar nav {
-  padding-bottom: 15px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #96FF96;
-}
-
-#calendar nav a.active {
-  font-weight: bold;
-}
-
-@media only screen and (min-width: 300px) and (max-width: 375px) {
-  table {
-    font-size: 13px;
-  }
-}
-
-@media only screen and (min-width: 300px) and (max-width: 900px) {
+@media only screen and (min-width:300px) and (max-width:900px) {
   table,
   thead,
-  tr {
-    display: block;
-    width: 100%;
-  }
-
-  thead {
-    display: none;
-  }
-
-  td {
-    display: inline;
-    border-bottom: 0;
-    padding-right: 10px;
-  }
-
-  tr {
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 2px dotted #4f8c4f;
-  }
-
+  tr { display: block; width: 100%; }
+  thead { display: none; }
+  td { display: inline; border-bottom: 0; padding-right: 10px; }
+  tr { padding-bottom: 10px; margin-bottom: 10px; border-bottom: 2px dotted #4f8c4f; }
   tr,
-  td {
-    float: left;
-  }
-
-  td:nth-child(1) {
-    font-weight: bold;
-  }
-
+  td { float: left; }
+  td:nth-child(1) { font-weight: bold; }
   td:nth-child(1),
-  td:nth-child(2)
-  {
-    width: 100%;
-  }
-
-  td:last-child
-  {
-    width: 100%;
-  }
+  td:nth-child(2) { width: 100%; }
+  td:last-child { width: 100%; }
 }

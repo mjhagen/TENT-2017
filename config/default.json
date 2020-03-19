@@ -6,7 +6,7 @@
     "templates.article",
     "templates.show",
     "templates.list",
-    "templates.center",
+    "templates.grip",
     "templates.image-left"
   ],
   "paths": {
