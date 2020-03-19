@@ -1,100 +1,31 @@
-@media only screen and (min-width: 300px) and (max-width: 479px) {
-  nav.level-2 a {
-    width: calc( 100% - 21px );
-  }
-
-  #home-calendar {
-    width: 100%;
-    border: 0;
-    padding-right: 0;
-  }
+@media only screen and (min-width:300px) and (max-width:479px) {
+  nav.level-2 a { width: calc(100% - 21px); }
+  #home-calendar { width: 100%; border: 0; padding-right: 0; }
 
   /* LESS MARGINS ON PHONES? */
-
-  #logo {
-    top: 15px;
-    left: calc(50% - 144px);
-    height: 64px;
-  }
-
-  #border {
-    top: 105px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-  }
-
-  #content {
-    top: 125px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-    font-size: 14px;
-  }
-
-  nav.pagination {
-    width: calc( 100% - 80px );
-  }
-
-  nav.level-2 li {
-    cursor: pointer;
-    flex-basis: 100%;
-    background-size: cover;
-    text-align: center;
-    height: 25vw;
-    margin-bottom: 15vw;
-    line-height: 60vw;
-  }
-
-  nav.level-2 li:after {
-    content: '';
-    display: none;
-  }
+  #logo { top: 15px; left: calc(50% - 144px); height: 64px; }
+  #border { top: 105px; left: 20px; right: 20px; bottom: 20px; }
+  #content { top: 125px; left: 40px; right: 40px; bottom: 40px; font-size: 14px; }
+  nav.pagination { width: calc(100% - 80px); }
+  nav.level-2 li { cursor: pointer; flex-basis: 100%; background-size: cover; text-align: center; height: 25vw; margin-bottom: 15vw; line-height: 60vw; }
+  nav.level-2 li:after { content: ''; display: none; }
+  .grip { display: block; }
+  .grip>.article { display: block; margin-bottom: 2vw; }
+  .grip>.article>div img { float: none; }
 }
-
-@media only screen and (min-width: 480px) {
-  nav.level-2 a {
-    width: calc( 50% - 21px );
-  }
-
-  #home-calendar {
-    width: calc( 50% - 26px );
-  }
-
-  #carousel {
-    width: calc( 50% - 25px );
-  }
+@media only screen and (min-width:480px) {
+  nav.level-2 a { width: calc(50% - 21px); }
+  #home-calendar { width: calc(50% - 26px); }
+  #carousel { width: calc(50% - 25px); }
 }
-
-@media only screen and (min-width: 768px) {
-  nav.level-2 a {
-    width: calc( 33% - 21px );
-  }
-
-  #home-calendar {
-    width: calc( 33% - 26px );
-  }
-
-  #carousel {
-    width: calc( 67% - 25px );
-  }
+@media only screen and (min-width:768px) {
+  nav.level-2 a { width: calc(33% - 21px); }
+  #home-calendar { width: calc(33% - 26px); }
+  #carousel { width: calc(67% - 25px); }
 }
-
-@media only screen and (min-width: 1024px) {
-  nav.level-2 a {
-    width: calc( 25% - 21px );
-  }
-
-  #home-calendar {
-    width: calc( 25% - 26px );
-  }
-
-  #carousel {
-    display: block;
-    width: calc( 75% - 25px );
-  }
-
-  #carousel img {
-    width: 100%;
-  }
+@media only screen and (min-width:1024px) {
+  nav.level-2 a { width: calc(25% - 21px); }
+  #home-calendar { width: calc(25% - 26px); }
+  #carousel { display: block; width: calc(75% - 25px); }
+  #carousel img { width: 100%; }
 }
